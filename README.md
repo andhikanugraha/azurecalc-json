@@ -16,10 +16,10 @@ The extension hasn't been published to any add-on marketplace yet, so follow the
 
 Requires Windows 10 Anniversary Update, build 14291 upwards.
 
-1. Download and unzip somewhere, or clone the repo
-2. Go to about:flags
+1. [Download as ZIP](https://github.com/andhikanugraha/azurecalc-json/archive/master.zip) and unzip somewhere, or clone the repo
+2. In Edge, go to `about:flags`
 3. Tick "Enable extension developer features"
-4. Click the ellipsis (...) on the Edge toolbar > Extensions > Load Extensions
+4. Click/tap the ellipsis (...) on the Edge toolbar > Extensions > Load Extensions
 5. Browse to where you unpacked the extension
 
 ### Chrome
