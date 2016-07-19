@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Azure Calculator JSON Export/Import",
+    "author": "Andhika Nugraha (andhika.nugraha@microsoft.com)",
+    "version": "0.1",
+    "description": "Export and import Azure Calculator estimates as JSON.",
+    "content_scripts": [
+        {
+            "matches": ["*://azure.microsoft.com/*/pricing/calculator*"],
+            "js": ["extension.js"]
+        }
+    ],
+    "permissions": [
+        "activeTab"
+    ]
+}
