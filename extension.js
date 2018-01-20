@@ -118,7 +118,7 @@ function init (evt) {
     divImportExport.appendChild(buttonImport);
     divImportExport.appendChild(dividerSpace);
     divImportExport.appendChild(buttonExport);
-    targetSection.insertBefore(divImportExport, section.childNodes[0]);
+    targetSection.insertBefore(divImportExport, targetSection.childNodes[0]);
 }
 
 init();
