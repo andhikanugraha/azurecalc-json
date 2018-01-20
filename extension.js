@@ -1,18 +1,38 @@
-var SERVICES_KEY = 'calculator.servicesv3';
+var SERVICES_KEY = 'azure_calculator_modules_v3';
 var CURRENCY_KEY = 'acomuser.currency';
 
-function createLinkElement(label, onclick) {
-    var a = document.createElement('a');
-    a.className = 'button toggle-service-picker';
-    a.style.marginLeft = '30px';
-    a.innerText = label;
-    a.href = '#';
-    a.addEventListener('click', function(e) {
+function createButtonElement(label, onclick) {
+    var button = document.createElement('button');
+    button.className = 'calculator-button';
+    button.innerText = label;
+    button.addEventListener('click', function(e) {
         e.preventDefault();
         onclick(e);
     });
 
-    return a;
+    return button;
+}
+
+function createDivElement(headerText, descriptionText) {
+    var div = document.createElement('div');
+    div.className = 'row column estimate-holder';
+    var header = document.createElement('h3');
+    header.className = 'text-heading4';
+    header.innerText = headerText;
+    var p = document.createElement('p');
+    p.innerText = descriptionText;
+
+    div.appendChild(header);
+    div.appendChild(p);
+
+    return div;
+}
+
+function createDivElementForDivide() {
+    var div = document.createElement('div');
+    div.style = 'width: 10px; height:auto; display:inline-block;'
+
+    return div;
 }
 
 function triggerExportJSON() {
@@ -84,12 +104,21 @@ function handleFileUpload(e) {
     }
 }
 
-function init() {
-    var a1 = createLinkElement('Export JSON', triggerExportJSON);
-    var a2 = createLinkElement('Import JSON', triggerImportJSON);
-    var div = document.querySelector('div.service-picker .banner-content');
-    div.appendChild(a1);
-    div.appendChild(a2);
+function init (evt) {
+    var DomSelector = '#azure-calculator';
+    var divImportExport = createDivElement('Import/Export estimate to JSON', 'The web\
+        extension for importing and exporting estimates from Azure Pricing Calculator is enabled, this box is not part \
+        of the official Microsoft Pricing Calculator tool. "Import JSON" will allow you to load previously exported \
+        data into the tool, discarding the existing one. If you want to export your current estimate, use the \
+        "Export JSON" button and select download location.');
+    var buttonImport = createButtonElement('Import JSON', triggerImportJSON);
+    var buttonExport = createButtonElement('Export JSON', triggerExportJSON);
+    var dividerSpace = createDivElementForDivide();
+    var targetSection = document.querySelector(DomSelector);          
+    divImportExport.appendChild(buttonImport);
+    divImportExport.appendChild(dividerSpace);
+    divImportExport.appendChild(buttonExport);
+    targetSection.insertBefore(divImportExport, section.childNodes[0]);
 }
 
 init();
